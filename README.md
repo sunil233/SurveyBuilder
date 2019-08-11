@@ -31,7 +31,7 @@ Login
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen1.png?raw=true) 
 Super Admin Dashboard
 ---
-![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.pngraw=true) 
+![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.png?raw=true) 
 Super Admin Dashboard
 ---
 
