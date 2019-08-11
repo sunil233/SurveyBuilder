@@ -13,7 +13,6 @@ This Project was created using Angular CLI and DotNet Core 2.1
 1) Clone or Download the project
 2) Restore the Packages(Dotnet packages and npm packages)
 
-
 # Angular Features
 1)   Multi-layout and Multi-level Horizontal menu
 2)   Bootstrap scss
@@ -26,17 +25,14 @@ This Project was created using Angular CLI and DotNet Core 2.1
 # Note:The Angular CLI uses Web Pack internally
 
 # Screenshots
-Login
+Screen 1:
 ---
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen1.png?raw=true) 
 Super Admin Dashboard
 ---
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.png?raw=true) 
-Super Admin Dashboard
+Screen 2:
 ---
-
-
-
 # Disclaimer:This sample project is for learning and training purpose.
 
 # Note for Error:When you run the appplication and if you encounter the below error ,
