@@ -16,11 +16,11 @@ This Project was created using Angular CLI and DotNet Core 2.1
 
 # Angular Features
 1)   Multi-layout and Multi-level Horizontal menu
-2)   Bootstrap scss
+2)   Bootstrap css
 3)   Routing and Route Guards
 4)   Lazyloading modules
 5)   Authenication using Http-Interceptors
-6)   Integrated 3rd party controls
+6)   Integrated 3rd party controls(ngx-Bootstrap controls,font-awesome icons)
 7)   Custom controls and Shared components
 
 # Note:The Angular CLI uses Web Pack internally
