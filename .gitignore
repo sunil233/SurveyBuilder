@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+/node_modules
+/build
+/packages
+/bin
+/obj
+/.vs
+/.vs/SurveyBuilder/v15/Server/
+/.vs/SurveyBuilder/v15/Server/sqlite3/db.lock
+/wwwroot/dist
+
+
+

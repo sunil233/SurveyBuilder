@@ -1,0 +1,46 @@
+<div>
+    <table class="table table-hover table-striped table-sortable" *ngIf='data'>
+        <thead>
+            <tr>
+                <th *ngFor="let column of columns" [class]="selectedClass(column.name)" [style.width.%]="column.width" 
+                    (click)="changeSorting(column.name)">
+                    {{column.headertext}}
+                </th>               
+                <th colspan="3"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of returnedArray | orderby : convertSorting()">
+                <td *ngFor="let column of columns">
+                    <label [innerHTML]="row[column.name] | format : column.filter" class="grid-text"></label>
+                </td>
+                <td *ngIf="isEdit" width="2%">
+                    <a  href="#" (click)="click('edit',row)"><em class="fa fa-pencil"></em></a>
+                </td>
+                <td *ngIf="isDelete" width="2%">
+                    <a  href="#" (click)="click('delete',row)"><em class="fa fa-trash text-danger"></em></a>
+                </td>
+            </tr>
+            <tr *ngIf='pdata && pdata.length<1'>
+                <td><div>No record found!</div></td>
+            </tr>
+            <tr >
+                <td [attr.colspan]="colcount">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-lg-3  col-md-3 col-sm-3" *ngIf="showSearch">
+                                <input #search class="form-control pull-right" type="text" placeholder="Search..." (keyup)='onSearch($event,search.value)'>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-3">
+                                <label>Total Records: {{length}}</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 pagertop pull-right" *ngIf="showPaging">
+                                <pagination class="pagination-sm " [(ngModel)]="currnetPageNo" [totalItems]="length" [itemsPerPage]="itemsPerPage" [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (numPages)="numPages = $event" (pageChanged)="onPageChange(config, $event)"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

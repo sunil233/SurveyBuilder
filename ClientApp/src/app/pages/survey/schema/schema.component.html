@@ -1,0 +1,279 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <tabset [justified]="true">
+        <tab (select)="onTabSelect($event)" id="schemaeditor">
+          <ng-template tabHeading>Schema Editor</ng-template>
+          <div *ngIf="isSchema">
+            <div class="row"><div class="col-md-12">&nbsp;</div></div>
+            <div class="row">
+              <div class="col-md-12">
+                <form [formGroup]="survey" novalidate>
+                  <div>
+                    <div class="row">
+                      <div class="col-md-2">&nbsp;</div>
+                      <div class="col-md-8">
+                        <div>
+                          <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                              <div class="form-group">
+                                <label for="surveyName">Survey Name</label>
+                                <input formControlName="surveyName" [(ngModel)]="_survey.surveyName" type="text" class="form-control" aria-describedby="surveyName" placeholder="Enter Survey name"
+                                       required [readonly]="readOnly">
+                                <span class="text-danger" *ngIf="survey.controls['surveyName'].errors?.required && (survey.controls['surveyName'].dirty || survey.controls['surveyName'].touched)">Survey Name is required.</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                              <div class="form-group">
+                                <label for="surveyCode">Survey Code</label>
+                                <input formControlName="surveyCode" [(ngModel)]="_survey.surveyCode" type="text" class="form-control"  aria-describedby="surveyCode" placeholder="Enter Survey code"
+                                       required [readonly]="readOnly">
+                                <span class="text-danger" *ngIf="survey.controls['surveyCode'].errors?.required && (survey.controls['surveyCode'].dirty || survey.controls['surveyCode'].touched)">Survey Code is required.</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <div class="form-group">
+                                <label for="surdescription">Description</label>
+                                <textarea formControlName="surveyDescription" [(ngModel)]="_survey.surveyDescription" name="surveyDescription" id="surveyDescription" class="form-control" placeholder="Enter Survey description"
+                                          [readonly]="readOnly"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">&nbsp;</div>
+                    </div>
+                  </div>
+                  <!---Page Section -->
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                      <div formArrayName="pages">
+                        <div *ngFor="let page of _survey.pages; let i = index">
+                          <div class="panel panel-default" [formGroupName]="i">
+                            <div class="panel-heading">
+                              Page Details
+                              <span *ngIf=" _survey.pages.length > 1" class="pull-right">
+                                <button type="button" (click)="movePageUp(i)"><span class="glyphicon glyphicon-arrow-up text-primary"></span></button>
+                                <button type="button" (click)="movePageDown(i)"><span class="glyphicon glyphicon-arrow-down text-primary"></span></button>
+                                <button type="button" (click)="removePage(i)"><span class="glyphicon glyphicon-trash text-danger" aria-hidden="true"></span></button>
+                              </span>
+                            </div>
+                            <div class="panel-body">
+                              <div class="row">
+                                <div class="col-md-11">
+                                  <label>Page Name</label>
+                                  <input type="text" formControlName="title" class="form-control" [(ngModel)]="page.Title">
+                                </div>
+                                <div class="col-md-1"></div>
+                              </div>
+                              <!-- Question segment -->
+                              <div class="question-container" formArrayName="questions">
+                                <div [formGroupName]="j" *ngFor="let question of page.Questions; let j = index">
+                                  <div class="row">
+                                    <div class="col-md-11">
+                                      <label>Question Code</label><br />
+                                      <input type="text" formControlName="questionCode" class="form-control" value="ij" [(ngModel)]="question.questionCode">
+                                    </div>
+                                    <div class="col-md-1">
+                                      <span class="pull-right">
+                                        <a href="#" (click)="removeQuestion(i,j)"><em class="fa fa-trash fa-2x text-danger"></em></a>
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-11">
+                                      <label>Question Title</label><br />
+                                      <input type="text" formControlName="questionTitle" class="form-control" [(ngModel)]="question.questionTitle">
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-5">
+                                      <label>Question Type</label><br />
+                                      <select formControlName="questionType" class="form-control" [(ngModel)]="question.questionType">
+                                        <option value="">--Select Question Type--</option>
+                                        <option value="checkbox">Check Boxes</option>
+                                        <option value="radio">Radio Button List</option>
+                                        <option value="dropdown">Dropdown</option>
+                                        <option value="text">Text Box</option>
+                                        <option value="rating">Rating</option>
+                                        <option value="datepicker">DatePicker</option>
+                                        <option value="textarea">textarea</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-md-5" *ngIf="question.questionType=='checkbox'||question.questionType=='radio'||question.questionType=='dropdown'">
+                                      <div class="form-inline">
+                                        <br />
+                                        <button (click)="addOptions(i,j)" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Option</button>&nbsp;
+                                        <input type="checkbox" formControlName="pageflowmodifier" [(ngModel)]="question.pageflowmodifier" /> Go to page based on answer
+                                      </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      &nbsp;
+                                    </div>
+                                  </div>
+                                  <div class="row" *ngIf="question.questionType=='checkbox'||question.questionType=='radio'||question.questionType=='dropdown'">
+                                    <div class="col-md-12">
+                                      <!-- Option Addition -->
+                                      <div formArrayName="options">
+                                        <div [formGroupName]="k" *ngFor="let option of question.options; let k=index">
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="form-inline">
+                                                {{k+1}}
+                                                <input type="text" formControlName="key" class="form-control" [(ngModel)]="option.key" placeholder="Option Key">
+                                                <input type="text" formControlName="label" class="form-control" [(ngModel)]="option.label" placeholder="Option Text">
+                                                <select class="form-control" formControlName="pageflowIndex" *ngIf="question.pageflowmodifier" [(ngModel)]="option.pageflowIndex" (change)="updateQuestionOptions(option, question)">
+                                                  <option *ngFor="let pag of pager; let pageno = index" [value]="pageno">{{pag.label}}</option>
+                                                </select>
+                                                <a href="#" (click)="removeOption(i,j,k)"><em class="fa fa-trash fa-2x text-danger"></em></a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-12"></div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-md-12"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- End Option Addition -->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  &nbsp;
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <button (click)="addQuestion(i)" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Question </button>
+                                </div>
+                              </div>
+                              <!-- End Question -->
+                              <!--Page Footer-->
+                              <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8">
+                                  <div class="form-inline pull-right" *ngIf="i<survey.value.pages.length">
+                                    <table class="page-bottom-tab-container pull-right">
+                                      <tr>
+                                        <td class="page-bottom-tab-triangle"></td>
+                                        <td class="page-bottom-tab"><label> After Page {{i+1}}</label></td>
+                                        <td class="page-bottom-tab">
+                                          <select class="form-control">
+                                            <option *ngFor="let pag of pager; let pageno = index" [value]="pageno">{{pag.label}}</option>
+                                          </select>
+                                        </td>
+                                        <td class="page-bottom-tab"><button (click)="addPage()" class="btn btn-sm btn-primary pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Page </button></td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--Page Footer-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                  </div>
+                  <!-- Page Section -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab (select)="onTabSelect($event)" id="schemapreview">
+          <ng-template tabHeading>
+            Preview 
+          </ng-template>
+          <div *ngIf="isPreview">
+            <form>
+              <div class="row">
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-10">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <!---Page  segment-->
+                      <div class="" *ngFor="let aPage of _survey.pages; let aPageIndex = index">
+                        <div *ngIf="currentIndex == aPageIndex">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h4>{{aPage.Title}}</h4>
+                            </div>
+                          </div>
+                          <!-- Question segment -->
+                          <div class="row">
+                            <div class="col-md-12">
+                              <question-builder [page]="aPage" [fields]="aPage.Questions" [form]="questionFormGroup" [parentForm]="survey"></question-builder>
+                            </div>
+                          </div>
+                          <!-- End of Question segment -->
+                          <!--Footer-->
+                          <div class="card-footer">
+                            <div class="row">
+                              <div class="col-md-4">&nbsp;</div>
+                              <div class="col-md-2"><button class="btn btn-sm btn-primary" *ngIf="currentIndex !== 0" (click)="previousPage()" type="button">&lt; Previous</button></div>
+                              <div class="col-md-2" *ngIf="aPageIndex !== (_survey.pages.length - 1)">
+                                <button class="btn btn-sm btn-primary" type="button" (click)="nextPage(aPage)" [disabled]="showNext">
+                                  Next &gt;
+                                </button>
+                              </div>
+                              <div class="col-md-2" *ngIf="aPageIndex == (_survey.pages.length - 1)">
+                                <button class="btn btn-sm btn-success" (click)="SaveSurvey()" [attr.disabled]="!survey.valid ? '' : null"  >Submit</button>
+                              </div>
+                              <div class="col-md-4">
+                              </div>
+                            </div>
+                          </div>
+                          <!--End of Footer-->
+                        </div>
+                      </div>
+                    </div>
+                    <!---End of Page segment-->
+                  </div>
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+              </div>
+            </form>
+          </div>
+        </tab>
+        <tab (select)="onTabSelect($event)" id="jsonviewer">
+          <ng-template tabHeading>
+            JSON Viewer
+          </ng-template>
+          <div>
+            <div class="row">
+              <div class="col-md-12">
+                <pre> {{_survey | json}} </pre>
+              </div>
+            </div>
+          </div>
+        </tab>
+        <tab (select)="onTabSelect($event)" id="jsonviewer">
+          <ng-template tabHeading>
+            Response Viewer
+          </ng-template>
+          <div>
+            <div class="row">
+              <div class="col-md-12">
+                <pre> {{formdata | json}} </pre>
+              </div>
+            </div>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>

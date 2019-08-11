@@ -1,0 +1,16 @@
+<br />
+<div class="col-xs-12 col-12 col-md-12 form-group" [formGroup]="form">
+
+  <div class="input-group">
+    <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           style="width:140px"
+           #dp="bsDatepicker"
+           bsDatepicker
+           [bsConfig]="bsConfig">
+    <button class="btn btn-sm btn-success"  (click)="dp.show()" [attr.aria-expanded]="dp.isOpen"> <i class="fa fa-calendar"></i></button>
+  </div>
+  
+</div>
+

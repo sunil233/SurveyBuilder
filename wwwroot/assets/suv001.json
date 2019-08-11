@@ -1,0 +1,145 @@
+{
+  "ID": 0,
+  "surveyName": "",
+  "surveyCode": "",
+  "surveyDescription": "",
+  "logoUrl": "",
+  "headerUrl": "",
+  "headerColor": "",
+  "footerUrl": "",
+  "footerColor": "",
+  "pages": [
+    {
+      "PageId": 1,
+      "pageflowIndex": 0,
+      "Title": "Page 1",
+      "Description": "",
+      "Questions": [
+        {
+          "ID": 1,
+          "questionCode": "Q1",
+          "questionType": "radio",
+          "questionTitle": "Where do you live",
+          "options": [
+            {
+              "label": "India",
+              "key": "001",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": "2",
+              "pageflow": {
+                "pageid": 2,
+                "nextpage": "",
+                "label": "Go to page2",
+                "surid": 0,
+                "pageorder": 1
+              }
+            },
+            {
+              "label": "USA",
+              "key": "002",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": "3",
+              "pageflow": {
+                "pageid": 3,
+                "nextpage": "",
+                "label": "Go to page3",
+                "surid": 0,
+                "pageorder": 2
+              }
+            }
+          ],
+          "Required": false,
+          "pageflowmodifier": true,
+          "answer": "",
+          "selectedAnswer": "001",
+          "selectedAnswers": []
+        }
+      ],
+      "pageflow": {
+        "pageid": 2,
+        "nextpage": "",
+        "label": "Go to page2",
+        "surid": 0,
+        "pageorder": 1
+      }
+    },
+    {
+      "PageId": 2,
+      "pageflowIndex": 0,
+      "Title": "Page 2",
+      "Description": "",
+      "Questions": [
+        {
+          "ID": 1,
+          "questionCode": "Q2",
+          "questionType": "radio",
+          "questionTitle": "Do you live in Hyderabad",
+          "options": [
+            {
+              "label": "Yes",
+              "key": "001",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": 0,
+              "pageflow": {}
+            },
+            {
+              "label": "No",
+              "key": "002",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": 0,
+              "pageflow": {}
+            }
+          ],
+          "Required": false,
+          "pageflowmodifier": false,
+          "answer": "",
+          "selectedAnswer": "",
+          "selectedAnswers": []
+        }
+      ],
+      "pageflow": {}
+    },
+    {
+      "PageId": 3,
+      "pageflowIndex": 0,
+      "Title": "Page 3",
+      "Description": "",
+      "Questions": [
+        {
+          "ID": 1,
+          "questionCode": "Q3",
+          "questionType": "radio",
+          "questionTitle": "Do you live in California?",
+          "options": [
+            {
+              "label": "Yes",
+              "key": "001",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": 0,
+              "pageflow": {}
+            },
+            {
+              "label": "No",
+              "key": "002",
+              "value": "",
+              "isChecked": false,
+              "pageflowIndex": 0,
+              "pageflow": {}
+            }
+          ],
+          "Required": false,
+          "pageflowmodifier": false,
+          "answer": "",
+          "selectedAnswer": "",
+          "selectedAnswers": []
+        }
+      ],
+      "pageflow": {}
+    }
+  ]
+} 
