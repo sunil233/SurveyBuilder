@@ -33,9 +33,6 @@ Screen 2:
 ---
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.png?raw=true) 
 
----
-# Disclaimer:This sample project is for learning and training purpose.
-
 # Note for Error:When you run the appplication and if you encounter the below error ,
 Go to the ClientApp path in the command prompt and Run the ng-build command ,
 Error :An unhandled exception occurred while processing the request.
@@ -48,4 +45,5 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
+---
+# Disclaimer:This sample project is for learning and training purpose.
