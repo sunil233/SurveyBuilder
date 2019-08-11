@@ -28,10 +28,10 @@ This Project was created using Angular CLI and DotNet Core 2.1
 Screen 1:
 ---
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen1.png?raw=true) 
-Super Admin Dashboard
+Screen 2:
 ---
 ![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.png?raw=true) 
-Screen 2:
+
 ---
 # Disclaimer:This sample project is for learning and training purpose.
 
