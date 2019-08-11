@@ -28,10 +28,10 @@ This Project was created using Angular CLI and DotNet Core 2.1
 # Screenshots
 Login
 ---
-![Alt text](https://github.com/sunil233/AngularPOC/blob/master/POC.Angular/wwwroot/screenshots/1_login.JPG?raw=true) 
+![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen1.png?raw=true) 
 Super Admin Dashboard
 ---
-![Alt text](https://github.com/sunil233/AngularPOC/blob/master/POC.Angular/wwwroot/screenshots/2-superadmindashboard_2.JPG?raw=true) 
+![Alt text](https://github.com/sunil233/SurveyBuilder/blob/master/wwwroot/screenshots/screen2.pngraw=true) 
 Super Admin Dashboard
 ---
 
