@@ -1,6 +1,7 @@
 # Survey Builder
 
 By using the Survey Builder you can design your own survey to ask the right questions in the right way.
+Build your dynamic survey with the ability to add relationships between questions and pages
 This Project was created using Angular CLI and DotNet Core 2.1
 # Prerequisites
 1) Visual studio 2017
